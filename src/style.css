@@ -26,7 +26,11 @@ li {
   font-size: 12px;
   font-weight: 100;
   line-height: 16px;
-  text-transform: capitalize;
+  
+}
+
+li::first-letter {
+    text-transform: capitalize;
 }
 
 .weather-temp img {
