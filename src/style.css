@@ -60,3 +60,13 @@ li::first-letter {
     color: #ebeadf;
 }
 
+a:link {
+    color: #f46565;
+    text-decoration: none;
+}
+
+a:hover {
+color: #333;
+    }
+    
+

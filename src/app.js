@@ -33,6 +33,8 @@ function displayTemp(response) {
     let iconElement = document.querySelector("#icon");
     iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     iconElement.setAttribute("alt", response.data.weather[0].description);
+
+    celTemp = response.data.main.temp;
 }
 
 function search(city) {
@@ -51,3 +53,26 @@ search(cityInputElement.value);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+function displayFahrTemp(event) {
+    event.preventDefault();
+    let fahrTemp = Math.round(celTemp * 9/5 + 32);
+    let tempElement = document.querySelector("#big-temp");
+    tempElement.innerHTML = fahrTemp;
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrTemp);
+
+function displayCelTemp(event) {
+event.preventDefault();
+let tempElement = document.querySelector("#big-temp");
+tempElement.innerHTML = Math.round(celTemp);
+}
+
+let celTemp = null;
+let celciusLink = document.querySelector("#celcius");
+celciusLink.addEventListener("click", displayCelTemp);
+
+
+search("Copenhagen");
