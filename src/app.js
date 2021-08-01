@@ -15,7 +15,7 @@ let day = days[date.getDay()];
 }
 
 function displayTemp(response) {
-    console.log(response);
+    
     let tempElement = document.querySelector("#big-temp");
     tempElement.innerHTML = Math.round(response.data.main.temp);
     let cityElement = document.querySelector("#city");
@@ -35,9 +35,19 @@ function displayTemp(response) {
     iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+function search(city) {
 let apiKey = "fdeebaf7e5260bc95803113646d25a38";
-let city = "Copenhagen";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-console.log(apiUrl);
 axios.get(apiUrl).then(displayTemp);
+}
+
+function handleSubmit(event) {
+event.preventDefault();
+let cityInputElement = document.querySelector("#city-input");
+search(cityInputElement.value);
+}
+
+
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
