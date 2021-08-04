@@ -60,6 +60,21 @@ li::first-letter {
     color: #ebeadf;
 }
 
+
+.weather-forecast-date, .weather-forecast-temps {
+font-size: 12px;
+color: #333;
+opacity: 0.8;
+
+
+
+}
+
+
+.temp-min {
+    opacity: 0.6;
+}
+
 a:link {
     color: #f46565;
     text-decoration: none;
@@ -74,6 +89,8 @@ a:hover {
 color: #333;
 text-decoration: none;
     }
+
+
 
 footer {
         text-align: center;

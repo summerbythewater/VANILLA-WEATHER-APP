@@ -14,6 +14,30 @@ let day = days[date.getDay()];
 
 }
 
+function displayForecast() {
+    let forecastElement = document.querySelector("#forecast");
+
+    let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-3">
+        <div class="weather-forecast-date">${day}</div>
+        <img src="http://openweathermap.org/img/wn/04d@2x.png" width ="40" alt="">
+        <div class="weather-forecast-temps">
+          <span class="temp-min">19°</span> / 
+          <span class="temp-max">21°</span>
+        </div>
+      </div>
+  `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemp(response) {
     
     let tempElement = document.querySelector("#big-temp");
@@ -76,3 +100,4 @@ celciusLink.addEventListener("click", displayCelTemp);
 
 
 search("Copenhagen");
+displayForecast();
