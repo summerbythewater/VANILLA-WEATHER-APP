@@ -14,7 +14,16 @@ let day = days[date.getDay()];
 
 }
 
-function displayForecast() {
+function getForecast(coordinates) {
+    let apiKey = "fdeebaf7e5260bc95803113646d25a38";
+    let lat = coordinates.lat;
+    let lon = coordinates.lon;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&unit=metric`;
+    axios.get(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+    console.log(response.data);
     let forecastElement = document.querySelector("#forecast");
 
     let days = ["Thu", "Fri", "Sat", "Sun"];
@@ -38,6 +47,8 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+
+
 function displayTemp(response) {
     
     let tempElement = document.querySelector("#big-temp");
@@ -59,6 +70,8 @@ function displayTemp(response) {
     iconElement.setAttribute("alt", response.data.weather[0].description);
 
     celTemp = response.data.main.temp;
+
+    getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -100,4 +113,3 @@ celciusLink.addEventListener("click", displayCelTemp);
 
 
 search("Copenhagen");
-displayForecast();
